@@ -21,7 +21,11 @@ export class DogBiteController {
   constructor(private dogBiteService: DogBiteService) {}
   @Post()
   async create(@Body() data: CreateDogBiteDto): Promise<DogBite> {
-    return this.dogBiteService.create(data);
+    console.log(
+      `[LOGGER]\n- Method: CREATE | \n- REQUEST: ${JSON.stringify(data)}\n`,
+    );
+
+    return await this.dogBiteService.create(data);
   }
 
   @Get()
