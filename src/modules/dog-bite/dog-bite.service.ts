@@ -1,5 +1,4 @@
 import {
-  BadRequestException,
   HttpException,
   Injectable,
   NotFoundException,
@@ -43,7 +42,13 @@ export class DogBiteService {
 
       return dogBites;
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        {
+          message: error.message,
+          status: this.HTTP_STATUS_BAD_REQUEST,
+        },
+        this.HTTP_STATUS_BAD_REQUEST,
+      );
     }
   }
 
@@ -57,7 +62,13 @@ export class DogBiteService {
 
       return dogBite;
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        {
+          message: error.message,
+          status: this.HTTP_STATUS_BAD_REQUEST,
+        },
+        this.HTTP_STATUS_BAD_REQUEST,
+      );
     }
   }
 
@@ -71,7 +82,13 @@ export class DogBiteService {
 
       await dogBite.destroy();
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        {
+          message: error.message,
+          status: this.HTTP_STATUS_BAD_REQUEST,
+        },
+        this.HTTP_STATUS_BAD_REQUEST,
+      );
     }
   }
 
@@ -87,7 +104,13 @@ export class DogBiteService {
         where: { id },
       });
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        {
+          message: error.message,
+          status: this.HTTP_STATUS_BAD_REQUEST,
+        },
+        this.HTTP_STATUS_BAD_REQUEST,
+      );
     }
   }
 }
