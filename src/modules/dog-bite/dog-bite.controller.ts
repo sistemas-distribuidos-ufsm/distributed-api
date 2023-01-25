@@ -11,6 +11,7 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { FiltersDto } from '../utils/filters.dto';
 import { DogBiteService } from './dog-bite.service';
+import { CompleteDogBiteDto } from './dto/complete-dog-bite.dto';
 import { CreateDogBiteDto } from './dto/create-dog-bite.dto';
 import { UpdateDogBiteDto } from './dto/update-dog-bite.dto';
 import { DogBite } from './entities/dog-bite.entity';
@@ -53,11 +54,20 @@ export class DogBiteController {
     return this.dogBiteService.delete(id);
   }
 
-  @Put(':id')
-  async update(
-    @Param('id') id: number,
-    @Body() data: UpdateDogBiteDto,
-  ): Promise<void> {
-    return this.dogBiteService.update(id, data);
+  @Put()
+  async update(@Body() data: CompleteDogBiteDto): Promise<void> {
+    const { id } = data;
+
+    const dogData: UpdateDogBiteDto = {
+      dateOfBite: data.dateOfBite,
+      breed: data.breed,
+      age: data.age,
+      gender: data.gender,
+      isSpayed: data.isSpayed,
+      borough: data.borough,
+      zipCode: data.zipCode,
+    };
+
+    return this.dogBiteService.update(id, dogData);
   }
 }
