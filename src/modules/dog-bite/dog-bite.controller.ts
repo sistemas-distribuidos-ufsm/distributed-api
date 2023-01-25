@@ -56,6 +56,10 @@ export class DogBiteController {
 
   @Put()
   async update(@Body() data: CompleteDogBiteDto): Promise<void> {
+    console.log(
+      `[LOGGER]\n- Method: UPDATE | \n- REQUEST: ${JSON.stringify(data)}\n`,
+    );
+
     const { id } = data;
 
     const dogData: UpdateDogBiteDto = {
