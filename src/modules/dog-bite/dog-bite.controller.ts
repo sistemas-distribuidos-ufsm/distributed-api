@@ -30,16 +30,26 @@ export class DogBiteController {
 
   @Get()
   async findAll(@Headers() filters: FiltersDto): Promise<DogBite[]> {
-    return this.dogBiteService.findAll(filters);
+    console.log(
+      `[LOGGER]\n- Method: FIND ALL | \n- FILTERS: ${JSON.stringify(
+        filters,
+      )}\n`,
+    );
+
+    return await this.dogBiteService.findAll(filters);
   }
 
   @Get(':id')
   async findById(@Param('id') id: number): Promise<DogBite> {
+    console.log(`[LOGGER]\n- Method: FIND BY ID | \n- ID: ${id}\n`);
+
     return this.dogBiteService.findById(id);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: number): Promise<void> {
+    console.log(`[LOGGER]\n- Method: DELETE | \n- ID: ${id}\n`);
+
     return this.dogBiteService.delete(id);
   }
 
