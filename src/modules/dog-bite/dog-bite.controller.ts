@@ -22,26 +22,44 @@ export class DogBiteController {
   constructor(private dogBiteService: DogBiteService) {}
   @Post()
   async create(@Body() data: CreateDogBiteDto): Promise<DogBite> {
-    return this.dogBiteService.create(data);
+    console.log(
+      `[LOGGER]\n- Method: CREATE | \n- REQUEST: ${JSON.stringify(data)}\n`,
+    );
+
+    return await this.dogBiteService.create(data);
   }
 
   @Get()
   async findAll(@Headers() filters: FiltersDto): Promise<DogBite[]> {
-    return this.dogBiteService.findAll(filters);
+    console.log(
+      `[LOGGER]\n- Method: FIND ALL | \n- FILTERS: ${JSON.stringify(
+        filters,
+      )}\n`,
+    );
+
+    return await this.dogBiteService.findAll(filters);
   }
 
   @Get(':id')
   async findById(@Param('id') id: number): Promise<DogBite> {
+    console.log(`[LOGGER]\n- Method: FIND BY ID | \n- ID: ${id}\n`);
+
     return this.dogBiteService.findById(id);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: number): Promise<void> {
+    console.log(`[LOGGER]\n- Method: DELETE | \n- ID: ${id}\n`);
+
     return this.dogBiteService.delete(id);
   }
 
   @Put()
   async update(@Body() data: CompleteDogBiteDto): Promise<void> {
+    console.log(
+      `[LOGGER]\n- Method: UPDATE | \n- REQUEST: ${JSON.stringify(data)}\n`,
+    );
+
     const { id } = data;
 
     const dogData: UpdateDogBiteDto = {

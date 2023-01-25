@@ -4,6 +4,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { DatabaseModels } from './database/database.models';
 import { DatabaseModule } from './database/database.module';
 import { DogBiteModule } from './modules/dog-bite/dog-bite.module';
+import { ApiSettingsModule } from './modules/api-settings/api-settings.module';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
@@ -24,6 +25,7 @@ require('dotenv').config();
     }),
     DatabaseModule,
     DogBiteModule,
+    ApiSettingsModule,
   ],
   controllers: [],
   providers: [],

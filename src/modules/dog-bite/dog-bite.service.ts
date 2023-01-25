@@ -1,5 +1,5 @@
 import {
-  BadRequestException,
+  HttpException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -11,6 +11,8 @@ import { DogBite } from './entities/dog-bite.entity';
 
 @Injectable()
 export class DogBiteService {
+  private HTTP_STATUS_BAD_REQUEST: number = 400;
+
   constructor(@InjectModel(DogBite) private dogBiteModel: typeof DogBite) {}
 
   async create(data: CreateDogBiteDto): Promise<DogBite> {
@@ -19,7 +21,13 @@ export class DogBiteService {
 
       return dogBite;
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        {
+          message: error.message,
+          status: this.HTTP_STATUS_BAD_REQUEST,
+        },
+        this.HTTP_STATUS_BAD_REQUEST,
+      );
     }
   }
 
@@ -34,7 +42,13 @@ export class DogBiteService {
 
       return dogBites;
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        {
+          message: error.message,
+          status: this.HTTP_STATUS_BAD_REQUEST,
+        },
+        this.HTTP_STATUS_BAD_REQUEST,
+      );
     }
   }
 
@@ -48,7 +62,13 @@ export class DogBiteService {
 
       return dogBite;
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        {
+          message: error.message,
+          status: this.HTTP_STATUS_BAD_REQUEST,
+        },
+        this.HTTP_STATUS_BAD_REQUEST,
+      );
     }
   }
 
@@ -62,7 +82,13 @@ export class DogBiteService {
 
       await dogBite.destroy();
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        {
+          message: error.message,
+          status: this.HTTP_STATUS_BAD_REQUEST,
+        },
+        this.HTTP_STATUS_BAD_REQUEST,
+      );
     }
   }
 
@@ -78,7 +104,13 @@ export class DogBiteService {
         where: { id },
       });
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        {
+          message: error.message,
+          status: this.HTTP_STATUS_BAD_REQUEST,
+        },
+        this.HTTP_STATUS_BAD_REQUEST,
+      );
     }
   }
 }
