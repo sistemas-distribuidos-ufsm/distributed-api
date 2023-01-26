@@ -48,14 +48,14 @@ export class DogBiteController {
   }
 
   @Delete(':id')
-  async delete(@Param('id') id: number): Promise<void> {
+  async delete(@Param('id') id: number): Promise<void | string> {
     console.log(`[LOGGER]\n- Method: DELETE | \n- ID: ${id}\n`);
 
     return this.dogBiteService.delete(id);
   }
 
   @Put()
-  async update(@Body() data: CompleteDogBiteDto): Promise<void> {
+  async update(@Body() data: CompleteDogBiteDto): Promise<void | string> {
     console.log(
       `[LOGGER]\n- Method: UPDATE | \n- REQUEST: ${JSON.stringify(data)}\n`,
     );

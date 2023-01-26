@@ -68,12 +68,12 @@ export class DogBiteService {
     }
   }
 
-  async delete(id: number): Promise<void> {
+  async delete(id: number): Promise<void | string> {
     try {
       const dogBite: DogBite = await this.dogBiteModel.findByPk(id);
 
       if (!dogBite) {
-        throw new NotFoundException('Dog bite not found');
+        return 'Dog bite not found';
       }
 
       await dogBite.destroy();
@@ -88,12 +88,12 @@ export class DogBiteService {
     }
   }
 
-  async update(id: number, data: UpdateDogBiteDto): Promise<void> {
+  async update(id: number, data: UpdateDogBiteDto): Promise<void | string> {
     try {
       const dogBite: DogBite = await this.dogBiteModel.findByPk(id);
 
       if (!dogBite) {
-        throw new NotFoundException('Dog bite not found');
+        return 'Dog bite not found';
       }
 
       await this.dogBiteModel.update(data, {
