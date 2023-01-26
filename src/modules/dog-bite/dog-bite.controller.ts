@@ -41,7 +41,7 @@ export class DogBiteController {
   }
 
   @Get(':id')
-  async findById(@Param('id') id: number): Promise<DogBite> {
+  async findById(@Param('id') id: number): Promise<DogBite | string> {
     console.log(`[LOGGER]\n- Method: FIND BY ID | \n- ID: ${id}\n`);
 
     return this.dogBiteService.findById(id);

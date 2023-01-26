@@ -52,15 +52,11 @@ export class DogBiteService {
     }
   }
 
-  async findById(id: number): Promise<DogBite> {
+  async findById(id: number): Promise<DogBite | string> {
     try {
       const dogBite: DogBite = await this.dogBiteModel.findByPk(id);
 
-      if (!dogBite) {
-        throw new NotFoundException('Dog bite not found');
-      }
-
-      return dogBite;
+      return dogBite ? dogBite : "Dog bite not found";
     } catch (error) {
       throw new HttpException(
         {
