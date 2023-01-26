@@ -1,6 +1,6 @@
 # Distributed API for Dog Bites
 
-This project is built using NestJS, Node.js, Sequelize and PostgreSQL. 
+This project is part of the "[Sistemas Distribuídos A](https://github.com/sistemas-distribuidos-ufsm)" classes and works in conjunction with the [Main API of Dog Bites](https://github.com/sistemas-distribuidos-ufsm/main-api). It is built using NestJS, Node.js, Sequelize and PostgreSQL.
 
 ## Getting Started
 
