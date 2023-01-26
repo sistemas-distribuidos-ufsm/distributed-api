@@ -38,10 +38,12 @@ This project uses [Swagger](https://swagger.io/) for API documentation. To acces
 - [Sequelize](https://sequelize.org/) - An easy-to-use multi SQL dialect ORM for Node.js
 - [Swagger](https://swagger.io/) - A popular tool for API documentation and development
 
-## Author
+## Authors
 
 Leonardo Trindade
+
 Samuel Rech Cassanego
+
 Francismo Palermo
 
 ## License
